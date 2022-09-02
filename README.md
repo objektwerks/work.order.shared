@@ -18,7 +18,7 @@ Build
 Usage
 -----
 >Install in consuming node project as follows:
-1. npm install https://github.com/objektwerks/work.order.shared.git --save
+1. npm install https://github.com/objektwerks/work.order.shared --save
 >Then import as follows:
 1. import { ... } from 'work-order-shared'
 
