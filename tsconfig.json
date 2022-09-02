@@ -4,6 +4,7 @@
     "lib": ["dom"],
     "module": "ES2022",
     "target": "ES2022",
+    "declaration": true,
     "outDir": "dist",
     "strict": true,
     "alwaysStrict": true,
