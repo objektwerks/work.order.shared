@@ -1,4 +1,5 @@
 {
+  "name": "work-order-shared",
   "version": "1.0.0",
   "description": "Work order web app shared code.",
   "homepage": "https://github.com/objektwerks/work.order.shared#readme",
