@@ -10,13 +10,12 @@
     "url": "git+https://github.com/objektwerks/work.order.shared.git"
   },
   "type": "module",
-  "types": "dist/shared.d.ts",
-  "main": "dist/shared.js",
+  "types": "shared.d.ts",
+  "main": "shared.js",
   "scripts": {
-    "clean": "rm -rf ./dist",
     "lint": "eslint . --ext .ts",
     "compile": "tsc --project ./tsconfig.json",
-    "build": "npm run clean && npm run compile && npm run lint"
+    "build": "npm run compile && npm run lint"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
