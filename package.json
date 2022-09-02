@@ -12,9 +12,10 @@
   "type": "module",
   "main": "./src/shared.ts",
   "scripts": {
+    "clean": "rm -rf ./dist",
     "lint": "eslint . --ext .ts",
     "compile": "tsc --project ./tsconfig.json",
-    "build": "npm run compile && npm run lint"
+    "build": "npm run clean && npm run compile && npm run lint"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
