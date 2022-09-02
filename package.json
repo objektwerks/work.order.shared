@@ -10,8 +10,8 @@
     "url": "git+https://github.com/objektwerks/work.order.shared.git"
   },
   "type": "module",
-  "types": "shared.d.ts",
-  "main": "shared.js",
+  "types": "index.d.ts",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "compile": "tsc --project ./tsconfig.json",
