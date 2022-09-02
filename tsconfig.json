@@ -9,7 +9,7 @@
     "strict": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "noImplicitAny": true,
