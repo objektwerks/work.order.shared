@@ -15,7 +15,6 @@
     "compile": "tsc --project ./tsconfig.json",
     "build": "npm run compile && npm run lint"
   },
-  "dependencies": {},
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
     "@types/node": "^18.7.13",
