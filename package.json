@@ -9,7 +9,7 @@
     "url": "git+https://github.com/objektwerks/work.order.shared.git"
   },
   "type": "module",
-  "main": "./src/entity.js",
+  "main": "./src/shared.ts",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "compile": "tsc --project ./tsconfig.json",
