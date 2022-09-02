@@ -4,7 +4,7 @@ Work order web app shared code, to include roles, entities, commands, events and
 
 Technologies
 ------------
->Typescript and Nodejs.
+>Typescript and Node.
 
 Install
 -------
