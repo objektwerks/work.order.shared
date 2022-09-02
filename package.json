@@ -10,7 +10,8 @@
     "url": "git+https://github.com/objektwerks/work.order.shared.git"
   },
   "type": "module",
-  "main": "./src/shared.ts",
+  "types": "dist/main.d.ts",
+  "main": "dist/shared.js",
   "scripts": {
     "clean": "rm -rf ./dist",
     "lint": "eslint . --ext .ts",
