@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Work order web app shared code.",
   "homepage": "https://github.com/objektwerks/work.order.shared#readme",
   "license": "Apache 2.0",
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/objektwerks/work.order.shared.git"
   },
   "type": "module",
-  "main": "./entity.js",
+  "main": "./src/entity.js",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "compile": "tsc --project ./tsconfig.json",
