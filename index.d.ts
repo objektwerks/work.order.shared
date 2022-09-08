@@ -66,15 +66,6 @@ export declare class WorkOrdersListed {
     static success(userId: number, workOrders: WorkOrder[]): WorkOrdersListed;
     static fail(userId: number, error: string): WorkOrdersListed;
 }
-export declare class ImageSaved {
-    number: number;
-    url: string;
-    success: boolean;
-    error: string;
-    constructor(number: number, url: string, success?: boolean, error?: string);
-    static success(number: number, url: string): ImageSaved;
-    static fail(number: number, url: string, error: string): ImageSaved;
-}
 export declare class UserSaved {
     id: number;
     success: boolean;

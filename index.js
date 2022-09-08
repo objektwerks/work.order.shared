@@ -132,24 +132,6 @@ export class WorkOrdersListed {
         return new WorkOrdersListed(userId, [WorkOrder.empty()], false, error);
     }
 }
-export class ImageSaved {
-    number;
-    url;
-    success;
-    error;
-    constructor(number, url, success = true, error = '') {
-        this.number = number;
-        this.url = url;
-        this.success = success;
-        this.error = error;
-    }
-    static success(number, url) {
-        return new ImageSaved(number, url);
-    }
-    static fail(number, url, error) {
-        return new ImageSaved(number, url, false, error);
-    }
-}
 export class UserSaved {
     id;
     success;
@@ -223,18 +205,6 @@ const datetimeInvalidMessage = 'For datetime, must use 24-character ISO standard
 const idInvalidMessage = 'An id must be greater than 0.';
 const numberInvalidMessage = 'A number must be greater than 0.';
 const definedInvalidMessage = 'This field may be empty, but must be defined.';
-function isRole(role) {
-    return role === homeowner || role === serviceProvider;
-}
-function isEmailAddress(emailAddress) {
-    return idLengthRange(emailAddress, 3, 128) && emailAddress.includes('@');
-}
-function isLength(string, length) {
-    return string.length === length;
-}
-function idLengthRange(string, lower, upper) {
-    return string.length >= lower && string.length <= upper;
-}
 function isDefined(string) {
     let isDefined;
     try {
@@ -245,6 +215,18 @@ function isDefined(string) {
     }
     return isDefined;
 }
+function isRole(role) {
+    return isDefined(role) ? role === homeowner || role === serviceProvider : false;
+}
+function isEmailAddress(emailAddress) {
+    return isDefined(emailAddress) ? idLengthRange(emailAddress, 3, 128) && emailAddress.includes('@') : false;
+}
+function isLength(string, length) {
+    return isDefined(string) ? string.length === length : false;
+}
+function idLengthRange(string, lower, upper) {
+    return isDefined(string) ? string.length >= lower && string.length <= upper : false;
+}
 function isGreaterThanOrEqualZero(number) {
     return number >= 0;
 }
@@ -252,7 +234,7 @@ export function isGreaterThanZero(number) {
     return number > 0;
 }
 export function isImageUrl(url) {
-    return url.startsWith('/images/');
+    return isDefined(url) ? url.startsWith('/images/') : false;
 }
 export function isRegisterValid(register) {
     return validateRegisterForm(register.role, register.name, register.emailAddress, register.streetAddress).length === 0;
