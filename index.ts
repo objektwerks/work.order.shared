@@ -109,21 +109,6 @@ export class WorkOrdersListed {
   }
 }
 
-export class ImageSaved {
-  constructor(public number: number, 
-              public url: string, 
-              public success: boolean = true, 
-              public error: string = '') {}
-
-  static success(number: number, url: string): ImageSaved {
-    return new ImageSaved(number, url)
-  }
-
-  static fail(number: number, url: string, error: string): ImageSaved {
-    return new ImageSaved(number, url, false, error)
-  }
-}
-
 export class UserSaved {
   constructor(public id: number, 
               public success: boolean = true, 
@@ -180,22 +165,6 @@ const idInvalidMessage = 'An id must be greater than 0.'
 const numberInvalidMessage = 'A number must be greater than 0.'
 const definedInvalidMessage = 'This field may be empty, but must be defined.'
 
-function isRole(role: string): boolean {
-  return role === homeowner || role === serviceProvider
-}
-
-function isEmailAddress(emailAddress: string): boolean {
-  return idLengthRange(emailAddress, 3, 128) && emailAddress.includes('@')
-}
-
-function isLength(string: string, length: number): boolean {
-  return string.length === length
-}
-
-function idLengthRange(string: string, lower: number, upper: number): boolean {
-  return string.length >= lower && string.length <= upper
-}
-
 function isDefined(string: string): boolean {
   let isDefined
   try {
@@ -204,6 +173,22 @@ function isDefined(string: string): boolean {
     isDefined = false
   }
   return isDefined
+}
+
+function isRole(role: string): boolean {
+  return isDefined(role) ? role === homeowner || role === serviceProvider : false
+}
+
+function isEmailAddress(emailAddress: string): boolean {
+  return isDefined(emailAddress) ? idLengthRange(emailAddress, 3, 128) && emailAddress.includes('@') : false
+}
+
+function isLength(string: string, length: number): boolean {
+  return isDefined(string) ? string.length === length : false
+}
+
+function idLengthRange(string: string, lower: number, upper: number): boolean {
+  return isDefined(string) ? string.length >= lower && string.length <= upper : false
 }
 
 function isGreaterThanOrEqualZero(number: number): boolean {
@@ -215,7 +200,7 @@ export function isGreaterThanZero(number: number): boolean {
 }
 
 export function isImageUrl(url: string): boolean {
-  return url.startsWith('/images/')
+  return isDefined(url) ? url.startsWith('/images/') : false
 }
 
 export function isRegisterValid(register: Register): boolean {
