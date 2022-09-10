@@ -182,7 +182,8 @@ export class User {
     streetAddress;
     registered;
     pin;
-    constructor(id, role, name, emailAddress, streetAddress, registered, pin) {
+    license;
+    constructor(id, role, name, emailAddress, streetAddress, registered, pin, license) {
         this.id = id;
         this.role = role;
         this.name = name;
@@ -190,9 +191,10 @@ export class User {
         this.streetAddress = streetAddress;
         this.registered = registered;
         this.pin = pin;
+        this.license = license;
     }
     static empty() {
-        return new User(0, '', '', '', '', '', '');
+        return new User(0, '', '', '', '', '', '', '');
     }
 }
 // Validators

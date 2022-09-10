@@ -95,7 +95,8 @@ export declare class User {
     streetAddress: string;
     registered: string;
     pin: string;
-    constructor(id: number, role: string, name: string, emailAddress: string, streetAddress: string, registered: string, pin: string);
+    license: string;
+    constructor(id: number, role: string, name: string, emailAddress: string, streetAddress: string, registered: string, pin: string, license: string);
     static empty(): User;
 }
 export declare function isGreaterThanZero(number: number): boolean;
