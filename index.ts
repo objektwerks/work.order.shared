@@ -30,6 +30,10 @@ export class SaveWorkOrder {
   constructor(public workOrder: WorkOrder) {}
 }
 
+export class ListWorkOrders {
+  constructor(public userId: number) {}
+}
+
 export class SaveUser {
   constructor(public user: User) {}
 }
@@ -76,21 +80,6 @@ export class WorkOrderSaved {
   
   static fail(number: number, error: string): WorkOrderSaved {
     return new WorkOrderSaved(number, false, error)
-  }
-}
-
-export class WorkOrderSelected {
-  constructor(public number: number,
-              public workOrder: WorkOrder, 
-              public success: boolean = true, 
-              public error: string = '') {}
-
-  static success(workOrder: WorkOrder): WorkOrderSelected {
-    return new WorkOrderSelected(workOrder.number, workOrder)
-  }
-
-  static fail(number: number, error: string): WorkOrderSelected {
-    return new WorkOrderSelected(number, WorkOrder.empty(), false, error)
   }
 }
 

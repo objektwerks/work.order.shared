@@ -37,6 +37,12 @@ export class SaveWorkOrder {
         this.workOrder = workOrder;
     }
 }
+export class ListWorkOrders {
+    userId;
+    constructor(userId) {
+        this.userId = userId;
+    }
+}
 export class SaveUser {
     user;
     constructor(user) {
@@ -94,24 +100,6 @@ export class WorkOrderSaved {
     }
     static fail(number, error) {
         return new WorkOrderSaved(number, false, error);
-    }
-}
-export class WorkOrderSelected {
-    number;
-    workOrder;
-    success;
-    error;
-    constructor(number, workOrder, success = true, error = '') {
-        this.number = number;
-        this.workOrder = workOrder;
-        this.success = success;
-        this.error = error;
-    }
-    static success(workOrder) {
-        return new WorkOrderSelected(workOrder.number, workOrder);
-    }
-    static fail(number, error) {
-        return new WorkOrderSelected(number, WorkOrder.empty(), false, error);
     }
 }
 export class WorkOrdersListed {

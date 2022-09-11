@@ -18,6 +18,10 @@ export declare class SaveWorkOrder {
     workOrder: WorkOrder;
     constructor(workOrder: WorkOrder);
 }
+export declare class ListWorkOrders {
+    userId: number;
+    constructor(userId: number);
+}
 export declare class SaveUser {
     user: User;
     constructor(user: User);
@@ -47,15 +51,6 @@ export declare class WorkOrderSaved {
     constructor(number: number, success?: boolean, error?: string);
     static success(number: number): WorkOrderSaved;
     static fail(number: number, error: string): WorkOrderSaved;
-}
-export declare class WorkOrderSelected {
-    number: number;
-    workOrder: WorkOrder;
-    success: boolean;
-    error: string;
-    constructor(number: number, workOrder: WorkOrder, success?: boolean, error?: string);
-    static success(workOrder: WorkOrder): WorkOrderSelected;
-    static fail(number: number, error: string): WorkOrderSelected;
 }
 export declare class WorkOrdersListed {
     userId: number;
