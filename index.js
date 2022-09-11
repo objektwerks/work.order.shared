@@ -33,14 +33,18 @@ export class Login {
 }
 export class SaveWorkOrder {
     workOrder;
-    constructor(workOrder) {
+    license;
+    constructor(workOrder, license) {
         this.workOrder = workOrder;
+        this.license = license;
     }
 }
 export class ListWorkOrders {
     userId;
-    constructor(userId) {
+    license;
+    constructor(userId, license) {
         this.userId = userId;
+        this.license = license;
     }
 }
 export class SaveUser {
@@ -186,6 +190,7 @@ export class User {
     }
 }
 // Validators
+const licenseInvalidMessage = 'A valid license is 36 characters.';
 const roleInvalidMessage = 'A valid role must be selected.';
 const nameInvalidMessage = 'For name, enter at least 2 characters.';
 const emailAddressInvalidMessage = 'For email address, enter at least 3 characters to inlcude @.';
@@ -220,6 +225,9 @@ function idLengthRange(string, lower, upper) {
 function isGreaterThanOrEqualZero(number) {
     return number >= 0;
 }
+export function isLicense(license) {
+    return isLength(license, 36);
+}
 export function isGreaterThanZero(number) {
     return number > 0;
 }
@@ -236,7 +244,7 @@ export function isWorkOrderValid(workOrder) {
     return validateWorkOrder(workOrder.number, workOrder.homeownerId, workOrder.serviceProviderId, workOrder.title, workOrder.issue, workOrder.imageUrl, workOrder.resolution, workOrder.opened, workOrder.closed).length === 0;
 }
 export function isUserValid(user) {
-    return validateUser(user.id, user.role, user.name, user.emailAddress, user.streetAddress, user.registered, user.pin).length === 0;
+    return validateUser(user.id, user.role, user.name, user.emailAddress, user.streetAddress, user.registered, user.pin, user.license).length === 0;
 }
 export function validateRegisterForm(role, name, emailAddress, streetAddress) {
     const errors = [];
@@ -290,7 +298,7 @@ export function validateWorkOrder(number, homeownerId, serviceProviderId, title,
         errors.push(definedInvalidMessage);
     return errors;
 }
-export function validateUser(id, role, name, emailAddress, streetAddress, registered, pin) {
+export function validateUser(id, role, name, emailAddress, streetAddress, registered, pin, license) {
     const errors = [];
     if (!isGreaterThanZero(id))
         errors.push(idInvalidMessage);
@@ -299,5 +307,7 @@ export function validateUser(id, role, name, emailAddress, streetAddress, regist
     errors.concat(validateRegisterForm(role, name, emailAddress, streetAddress));
     if (!isLength(pin, 7))
         errors.push(pinInvalidMessage);
+    if (!isLength(license, 36))
+        errors.push(licenseInvalidMessage);
     return errors;
 }

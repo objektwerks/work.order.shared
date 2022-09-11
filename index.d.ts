@@ -16,11 +16,13 @@ export declare class Login {
 }
 export declare class SaveWorkOrder {
     workOrder: WorkOrder;
-    constructor(workOrder: WorkOrder);
+    license: string;
+    constructor(workOrder: WorkOrder, license: string);
 }
 export declare class ListWorkOrders {
     userId: number;
-    constructor(userId: number);
+    license: string;
+    constructor(userId: number, license: string);
 }
 export declare class SaveUser {
     user: User;
@@ -94,6 +96,7 @@ export declare class User {
     constructor(id: number, role: string, name: string, emailAddress: string, streetAddress: string, registered: string, pin: string, license: string);
     static empty(): User;
 }
+export declare function isLicense(license: string): boolean;
 export declare function isGreaterThanZero(number: number): boolean;
 export declare function isImageUrl(url: string): boolean;
 export declare function isRegisterValid(register: Register): boolean;
@@ -104,4 +107,4 @@ export declare function validateRegisterForm(role: string, name: string, emailAd
 export declare function validateLoginForm(emailAddress: string, pin: string): string[];
 export declare function validateUserForm(name: string, emailAddress: string, streetAddress: string): string[];
 export declare function validateWorkOrder(number: number, homeownerId: number, serviceProviderId: number, title: string, issue: string, imageUrl: string, resolution: string, opened: string, closed: string): string[];
-export declare function validateUser(id: number, role: string, name: string, emailAddress: string, streetAddress: string, registered: string, pin: string): string[];
+export declare function validateUser(id: number, role: string, name: string, emailAddress: string, streetAddress: string, registered: string, pin: string, license: string): string[];
