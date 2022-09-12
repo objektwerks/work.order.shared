@@ -3,11 +3,9 @@ export const homeowner = 'homeowner';
 export const serviceProvider = 'serviceprovider';
 // Json-Object
 export function toJson(object) {
-    console.log('*** toJson object: ', object);
     return JSON.stringify(object);
 }
 export function toObject(json) {
-    console.log('*** toObject json: ', json);
     return JSON.parse(json);
 }
 // Commands
