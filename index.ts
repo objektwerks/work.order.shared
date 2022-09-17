@@ -1,3 +1,21 @@
+// Mime Types
+const mimetypes = new Map<string, string>()
+mimetypes.set('image/jpeg', 'jpeg')
+mimetypes.set('image/png', 'png')
+
+export function isMimeTypeAccepted(mimetype: string): boolean {
+  return mimetypes.has(mimetype)
+}
+
+export function getFileExtByMimeType(mimetype: string): string {
+  let ext = 'txt'
+  if (mimetypes.has(mimetype)) {
+    const value = mimetypes.get(mimetype)
+    if (value !== undefined) ext = value
+  }
+  return ext
+}
+
 // Roles
 export const homeowner = 'homeowner'
 export const serviceProvider = 'serviceprovider'
@@ -155,13 +173,7 @@ const numberInvalidMessage = 'A number must be greater than 0.'
 const definedInvalidMessage = 'This field may be empty, but must be defined.'
 
 function isDefined(string: string): boolean {
-  let isDefined
-  try {
-    isDefined = string !== undefined && string !== null && string.length >= 0
-  } catch {
-    isDefined = false
-  }
-  return isDefined
+  return string !== null
 }
 
 function isRole(role: string): boolean {

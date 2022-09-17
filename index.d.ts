@@ -1,3 +1,5 @@
+export declare function isMimeTypeAccepted(mimetype: string): boolean;
+export declare function getFileExtByMimeType(mimetype: string): string;
 export declare const homeowner = "homeowner";
 export declare const serviceProvider = "serviceprovider";
 export declare function toJson<T>(object: T): string;

@@ -1,3 +1,19 @@
+// Mime Types
+const mimetypes = new Map();
+mimetypes.set('image/jpeg', 'jpeg');
+mimetypes.set('image/png', 'png');
+export function isMimeTypeAccepted(mimetype) {
+    return mimetypes.has(mimetype);
+}
+export function getFileExtByMimeType(mimetype) {
+    let ext = 'txt';
+    if (mimetypes.has(mimetype)) {
+        const value = mimetypes.get(mimetype);
+        if (value !== undefined)
+            ext = value;
+    }
+    return ext;
+}
 // Roles
 export const homeowner = 'homeowner';
 export const serviceProvider = 'serviceprovider';
@@ -199,14 +215,7 @@ const idInvalidMessage = 'An id must be greater than 0.';
 const numberInvalidMessage = 'A number must be greater than 0.';
 const definedInvalidMessage = 'This field may be empty, but must be defined.';
 function isDefined(string) {
-    let isDefined;
-    try {
-        isDefined = string !== undefined && string !== null && string.length >= 0;
-    }
-    catch {
-        isDefined = false;
-    }
-    return isDefined;
+    return string !== null;
 }
 function isRole(role) {
     return isDefined(role) ? role === homeowner || role === serviceProvider : false;
