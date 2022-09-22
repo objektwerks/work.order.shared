@@ -161,23 +161,25 @@ export class WorkOrder {
     serviceProviderId;
     title;
     issue;
+    streetAddress;
     imageUrl;
     resolution;
     opened;
     closed;
-    constructor(number, homeownerId, serviceProviderId, title, issue, imageUrl, resolution, opened, closed) {
+    constructor(number, homeownerId, serviceProviderId, title, issue, streetAddress, imageUrl, resolution, opened, closed) {
         this.number = number;
         this.homeownerId = homeownerId;
         this.serviceProviderId = serviceProviderId;
         this.title = title;
         this.issue = issue;
+        this.streetAddress = streetAddress;
         this.imageUrl = imageUrl;
         this.resolution = resolution;
         this.opened = opened;
         this.closed = closed;
     }
     static empty() {
-        return new WorkOrder(0, 0, 0, '', '', '', '', '', '');
+        return new WorkOrder(0, 0, 0, '', '', '', '', '', '', '');
     }
 }
 export class User {
@@ -248,7 +250,7 @@ export function isLoginValid(login) {
     return validateLoginForm(login.emailAddress, login.pin).length === 0;
 }
 export function isWorkOrderValid(workOrder) {
-    return validateWorkOrder(workOrder.number, workOrder.homeownerId, workOrder.serviceProviderId, workOrder.title, workOrder.issue, workOrder.imageUrl, workOrder.resolution, workOrder.opened, workOrder.closed).length === 0;
+    return validateWorkOrder(workOrder.number, workOrder.homeownerId, workOrder.serviceProviderId, workOrder.title, workOrder.issue, workOrder.streetAddress, workOrder.imageUrl, workOrder.resolution, workOrder.opened, workOrder.closed).length === 0;
 }
 export function isUserValid(user) {
     return validateUser(user.id, user.role, user.name, user.emailAddress, user.streetAddress, user.registered, user.pin, user.license).length === 0;
@@ -283,7 +285,7 @@ export function validateUserForm(name, emailAddress, streetAddress) {
         errors.push(streetAddressInvalidMessage);
     return errors;
 }
-export function validateWorkOrder(number, homeownerId, serviceProviderId, title, issue, imageUrl, resolution, opened, closed) {
+export function validateWorkOrder(number, homeownerId, serviceProviderId, title, issue, streetAddress, imageUrl, resolution, opened, closed) {
     const errors = [];
     if (!isGreaterThanOrEqualZero(number))
         errors.push(numberInvalidMessage);
@@ -295,6 +297,8 @@ export function validateWorkOrder(number, homeownerId, serviceProviderId, title,
         errors.push(definedInvalidMessage);
     if (!idLengthRange(issue, 4, 255))
         errors.push(definedInvalidMessage);
+    if (!idLengthRange(streetAddress, 6, 128))
+        errors.push(streetAddressInvalidMessage);
     if (!isDefined(imageUrl))
         errors.push(definedInvalidMessage);
     if (!isDefined(resolution))

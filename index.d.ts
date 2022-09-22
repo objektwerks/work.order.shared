@@ -79,11 +79,12 @@ export declare class WorkOrder {
     serviceProviderId: number;
     title: string;
     issue: string;
+    streetAddress: string;
     imageUrl: string;
     resolution: string;
     opened: string;
     closed: string;
-    constructor(number: number, homeownerId: number, serviceProviderId: number, title: string, issue: string, imageUrl: string, resolution: string, opened: string, closed: string);
+    constructor(number: number, homeownerId: number, serviceProviderId: number, title: string, issue: string, streetAddress: string, imageUrl: string, resolution: string, opened: string, closed: string);
     static empty(): WorkOrder;
 }
 export declare class User {
@@ -108,5 +109,5 @@ export declare function isUserValid(user: User): boolean;
 export declare function validateRegisterForm(role: string, name: string, emailAddress: string, streetAddress: string): string[];
 export declare function validateLoginForm(emailAddress: string, pin: string): string[];
 export declare function validateUserForm(name: string, emailAddress: string, streetAddress: string): string[];
-export declare function validateWorkOrder(number: number, homeownerId: number, serviceProviderId: number, title: string, issue: string, imageUrl: string, resolution: string, opened: string, closed: string): string[];
+export declare function validateWorkOrder(number: number, homeownerId: number, serviceProviderId: number, title: string, issue: string, streetAddress: string, imageUrl: string, resolution: string, opened: string, closed: string): string[];
 export declare function validateUser(id: number, role: string, name: string, emailAddress: string, streetAddress: string, registered: string, pin: string, license: string): string[];
