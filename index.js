@@ -1,6 +1,7 @@
 // Mime Types
 const mimetypes = new Map();
 mimetypes.set('image/jpeg', 'jpeg');
+mimetypes.set('image/jpg', 'jpg');
 mimetypes.set('image/png', 'png');
 export function isMimeTypeAccepted(mimetype) {
     return mimetypes.has(mimetype);
